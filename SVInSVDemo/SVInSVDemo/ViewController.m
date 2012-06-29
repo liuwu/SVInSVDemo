@@ -41,6 +41,7 @@
                   [NSArray arrayWithObjects:[self getPath:@"50"],[self getPath:@"51"],nil],
                   nil];
     SSView* sv =[SSView createWithFrame:self.view.bounds ds:ds];
+    sv.curIndexPath =[NSIndexPath indexPathForRow:1 inSection:1];
     [self.view addSubview:sv];
 
 }

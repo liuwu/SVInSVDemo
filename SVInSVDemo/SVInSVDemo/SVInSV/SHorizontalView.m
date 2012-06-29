@@ -11,8 +11,9 @@
 #import "SVerticalView.h"
 
 @implementation SHorizontalView
-@synthesize ds;
+@synthesize ds,curIndexPath;
 - (void)dealloc {
+    self.curIndexPath = nil;
     self.ds = nil;
     [super dealloc];
 }
@@ -50,6 +51,23 @@
     NSArray* dsChild =[self.ds objectAtIndex:index];
     svv.ds = dsChild;
     return svv;
+}
+
+-(void)setCurIndexPath:(NSIndexPath *)aCurIndexPath{
+    if (curIndexPath) {
+        [curIndexPath release];
+    }
+    curIndexPath = [aCurIndexPath retain];
+    
+    myPV.currentPageIndex = aCurIndexPath.section;
+
+    [self performSelector:@selector(delayOper) withObject:nil afterDelay:0.1];
+     
+}
+
+-(void)delayOper{
+    SVerticalView* svv = (SVerticalView*)[myPV viewForPageAtIndex:myPV.currentPageIndex];
+    svv.curIndex = curIndexPath.row;
 }
 
 @end

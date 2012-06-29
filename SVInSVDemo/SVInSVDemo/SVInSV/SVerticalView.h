@@ -13,7 +13,12 @@
     ATPagingView* myPV;  
 }
 
+@property(nonatomic,assign) int curIndex;
+
 @property(nonatomic,retain)NSArray* ds;
+
+
+
 
 @end
 

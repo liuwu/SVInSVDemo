@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "ATPagingView.h"
 
+@class SVerticalView;
+
 @interface SHorizontalView : UIView<ATPagingViewDelegate>{ 
-    ATPagingView* myPV;  
+    ATPagingView* myPV; 
+    SVerticalView* svVertical;
 }
 
 @property(nonatomic,retain)NSArray* ds;
-
+@property(nonatomic,retain)NSIndexPath* curIndexPath;
 
 
 

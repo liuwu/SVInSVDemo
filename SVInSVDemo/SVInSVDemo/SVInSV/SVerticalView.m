@@ -9,7 +9,7 @@
 #import "SVerticalView.h"
 
 @implementation SVerticalView
-@synthesize ds;
+@synthesize ds,curIndex;
 - (void)dealloc {
     self.ds = nil;
     [super dealloc];
@@ -40,6 +40,13 @@
     myPV.currentPageIndex = 0;
 }
 
+-(void)setCurIndex:(int)aCurIndex{
+    curIndex = aCurIndex;
+    [myPV reloadData];
+    myPV.currentPageIndex = curIndex;
+}
+
+
 - (UIView *)viewForPageInPagingView:(ATPagingView *)pagingView atIndex:(NSInteger)index{
     UIImageView* iv =(UIImageView*)[pagingView dequeueReusablePage];
     if (!iv) {
@@ -49,6 +56,8 @@
     iv.image = [UIImage imageWithContentsOfFile:path];
     return iv;
 }
+
+
 
 
 @end

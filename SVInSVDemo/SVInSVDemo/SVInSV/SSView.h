@@ -8,13 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSView : UIView
+@class SHorizontalView;
+
+@interface SSView : UIView{
+    SHorizontalView* svHorizontal;
+}
 
 @property(nonatomic,retain)NSArray* dsOri;
-
+@property(nonatomic,retain)NSIndexPath* curIndexPath;
 
 //ds:array with array
 +(id)createWithFrame:(CGRect)frame ds:(NSArray*)ds;
 -(id)initWithFrame:(CGRect)frame ds:(NSArray*)ds;
+
+
+
 
 @end

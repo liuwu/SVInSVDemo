@@ -13,8 +13,9 @@
 
 @implementation SSView
 
-@synthesize dsOri;
+@synthesize dsOri,curIndexPath;
 - (void)dealloc {
+    self.curIndexPath = nil;
     self.dsOri = nil;
     [super dealloc];
 }
@@ -24,10 +25,21 @@
     return v;
 }
 
+-(void)setCurIndexPath:(NSIndexPath *)aCurIndexPath{
+    if (curIndexPath) {
+        [curIndexPath release];
+    }
+    curIndexPath = [aCurIndexPath retain]; 
+    
+    svHorizontal.curIndexPath = self.curIndexPath;
+    
+}
+
 -(id)initWithFrame:(CGRect)frame ds:(NSArray*)ds{
     self = [super initWithFrame:frame];
     if (self) {
         SHorizontalView* shv =[[[SHorizontalView alloc] initWithFrame:frame] autorelease];
+        svHorizontal = shv;
         shv.ds = ds;
         [self addSubview:shv];
     }
